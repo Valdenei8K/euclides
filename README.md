@@ -32,7 +32,7 @@ A aplicação permite que o usuário envie três números via frontend. Esses n�
 ### 📦 Clonando o repositório
 
 ```bash
-git clone https://github.com/Valdenei8K/euclides
+git clone https://github.com/Valdenei8K/euclides.git
 cd euclides
 
 ▶️ Subindo o ambiente completo
