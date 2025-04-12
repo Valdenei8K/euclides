@@ -1,17 +1,19 @@
-<div class="container">
-    <h2>Calcular Média</h2>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+<div class="form-container">
+  <h2>Calcular Média</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
       <label>Número 1:</label>
       <input type="number" formControlName="num1" required>
-      
+    </div>
+    <div class="form-group">
       <label>Número 2:</label>
       <input type="number" formControlName="num2" required>
-      
+    </div>
+    <div class="form-group">
       <label>Número 3:</label>
       <input type="number" formControlName="num3" required>
-      
-      <button type="submit" [disabled]="form.invalid">Calcular</button>
-    </form>
-    <p *ngIf="status">Status: {{ status }}</p>
-  </div>
-  
+    </div>
+    <button type="submit" [disabled]="form.invalid">Calcular</button>
+  </form>
+  <p class="status" *ngIf="status">Status: {{ status }}</p>
+</div>

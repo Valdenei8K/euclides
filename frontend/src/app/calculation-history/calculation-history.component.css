@@ -1,0 +1,48 @@
+.history-container {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: auto;
+  }
+  
+  .history-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .history-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .history-container th,
+  .history-container td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  
+  .history-container th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .history-container tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .no-data {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+    font-style: italic;
+  }
+  

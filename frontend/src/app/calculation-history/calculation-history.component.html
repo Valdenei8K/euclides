@@ -1,28 +1,30 @@
-<h2>Histórico de Processamentos</h2>
+<div class="history-container">
+  <h2>Histórico de Processamentos</h2>
 
-<table *ngIf="processList.length > 0; else semDados">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Números</th>
-      <th>Média</th>
-      <th>Mediana</th>
-      <th>Status</th>
-      <th>Criado em</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let processo of processList">
-      <td>{{ processo.id }}</td>
-      <td>{{ processo.numeros.join(',')}}</td>
-      <td>{{ processo.media }}</td>
-      <td>{{ processo.mediana }}</td>
-      <td>{{ processo.status }}</td>
-      <td>{{ processo.criado_em | date:'short' }}</td>
-    </tr>
-  </tbody>
-</table>
+  <table *ngIf="processList.length > 0; else semDados">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Números</th>
+        <th>Média</th>
+        <th>Mediana</th>
+        <th>Status</th>
+        <th>Criado em</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let processo of processList">
+        <td>{{ processo.id }}</td>
+        <td>{{ processo.numeros.join(', ') }}</td>
+        <td>{{ processo.media }}</td>
+        <td>{{ processo.mediana }}</td>
+        <td>{{ processo.status }}</td>
+        <td>{{ processo.criado_em | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<ng-template #semDados>
-  <p>Nenhum processamento encontrado.</p>
-</ng-template>
+  <ng-template #semDados>
+    <p class="no-data">Nenhum processamento encontrado.</p>
+  </ng-template>
+</div>
