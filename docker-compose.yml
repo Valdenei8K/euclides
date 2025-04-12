@@ -1,0 +1,61 @@
+# version: '3.9'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "4300:80"
+    depends_on:
+      - backend
+    networks:
+      - euclides_net
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - euclides_net
+
+  backend:
+    build: ./backend
+    container_name: backend
+    command: >
+      sh -c "python manage.py migrate &&
+             gunicorn euclides.wsgi:application --bind 0.0.0.0:8000"
+    ports:
+      - "8001:8000"
+    depends_on:
+      - rabbitmq
+    environment:
+      CELERY_BROKER_URL: amqp://guest:guest@rabbitmq:5672//
+    volumes:
+      - app_data:/app
+    networks:
+      - euclides_net
+
+  worker:
+    build: ./backend
+    container_name: worker
+    command: celery -A euclides worker -l info
+    environment:
+      CELERY_BROKER_URL: amqp://guest:guest@rabbitmq:5672//
+    volumes:
+      - app_data:/app
+    networks:
+      - euclides_net
+
+volumes:
+  rabbitmq_data:
+  app_data:
+
+networks:
+  euclides_net:

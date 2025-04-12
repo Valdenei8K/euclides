@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Calcular Média</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Número 1:</label>
+      <input type="number" formControlName="num1" required>
+      
+      <label>Número 2:</label>
+      <input type="number" formControlName="num2" required>
+      
+      <label>Número 3:</label>
+      <input type="number" formControlName="num3" required>
+      
+      <button type="submit" [disabled]="form.invalid">Calcular</button>
+    </form>
+    <p *ngIf="status">Status: {{ status }}</p>
+  </div>
+  
