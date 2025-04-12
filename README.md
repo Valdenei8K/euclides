@@ -38,13 +38,7 @@ cd euclides
 ▶️ Subindo o ambiente completo
 
 # Build e start dos containers
-docker-compose up --build
-
-# Acessar o terminal do backend
-docker exec -it backend bash
-
-# Rodar as migrations manualmente (caso necessário)
-docker exec backend python manage.py migrate
+docker-compose up --build -d
 
 # Parar todos os containers
 docker-compose down
